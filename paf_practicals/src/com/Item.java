@@ -17,9 +17,9 @@ public class Item {
 
 	 try
 	 {
-	 Class.forName("com.mysql.jdbc.Driver");
-	 con= DriverManager.getConnection("jdbc:mysql://localhost:8088/prac3_paf_shan",
-	 "root", "");
+		 Class.forName("com.mysql.jdbc.Driver"); 
+		 con= DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/prac3_paf", 
+		 "root", ""); 
 	 
 	 //For testing
 	 System.out.print("Successfully connected");
