@@ -173,16 +173,16 @@ public String UpdateItems(String itemID,String code, String name, String price, 
 }
 
 //DELETE ITEMS
-	public String deleteItem(String itemID)
-	{ 
-	 String output = ""; 
-	 
-	 try
-	 { 
-	  Connection con = connect(); 
-	 if (con == null) { 
-	  return "Error while connecting to the database for deleting."; 
-	  } 
+public String deleteItem(String itemID)
+{ 
+ String output = ""; 
+ 
+ try
+ { 
+  Connection con = connect(); 
+ if (con == null) { 
+  return "Error while connecting to the database for deleting."; 
+  } 
 	  
 	// create a prepared statement
 	 String query = "delete from items where itemID=?"; 
