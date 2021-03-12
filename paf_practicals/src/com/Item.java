@@ -135,41 +135,7 @@ public class Item {
 
 	}
 	
-	//DELETE ITEMS
-		public static boolean deleteItems(String itemID) {
-			
-			int convertedID = Integer.parseInt(itemID);
-			
-			try {
-				Connection con = connect(); 
-				 
-				 Statement stmt = (Statement) con.createStatement(); 
-			
-				
-				String sql = "delete from items where itemID = '"+convertedID+"'";
-				int r = stmt.executeUpdate(sql);
-				
-				if(r>0) {
-					
-					isSuccess = true;
-				}
-				else {
-					
-					isSuccess = false;
-				}
-				
-				
-			}catch(Exception e) {
-				
-				e.printStackTrace();
-			}
-			
-			
-			return isSuccess;
-		}
-
 	
-
 //UPDATE ITEMS
 
 public String UpdateItems(String itemID,String code, String name, String price, String desc)
@@ -206,9 +172,40 @@ public String UpdateItems(String itemID,String code, String name, String price, 
 	
 }
 
+//DELETE ITEMS
+	public String deleteItem(String itemID)
+	{ 
+	 String output = ""; 
+	 
+	 try
+	 { 
+	  Connection con = connect(); 
+	 if (con == null) { 
+	  return "Error while connecting to the database for deleting."; 
+	  } 
+	  
+	// create a prepared statement
+	 String query = "delete from items where itemID=?"; 
+	 PreparedStatement preparedStmt = con.prepareStatement(query); 
+	 
+	 // binding values
+	 preparedStmt.setInt(1, Integer.parseInt(itemID)); 
+	  
+	 // execute the statement
+	 preparedStmt.execute(); 
+	 con.close(); 
+	 output = "Deleted successfully";
+	 } 
+	 catch (Exception e) 
+	 { 
+	 output = "Error while deleting the item."; 
+	  System.err.println(e.getMessage()); 
+	 }
+	  return output; 
 }
 
 
+}
 
 
 
