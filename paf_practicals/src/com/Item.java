@@ -94,7 +94,7 @@ public class Item {
 		 String query = "select * from items"; 
 		 
 		 Statement stmt = (Statement) con.createStatement(); 
-		 ResultSet rs = ((java.sql.Statement) stmt).executeQuery(query); 
+		 ResultSet rs = stmt.executeQuery(query); 
 		 
 		 // iterate through the rows in the result set
 		 while (rs.next()) 
@@ -111,15 +111,8 @@ public class Item {
 		 output += "<td>" + itemPrice + "</td>";
 		 output += "<td>" + itemDesc + "</td>";
 		 
-		 // buttons
-		 output += "<td><input name='btnUpdate' " 
-		 + " type='button' value='Update' onclick = 'UpdateItems()' ></td>"
-		 + "<td><form method='post' action='items.jsp'>"
-		 + "<input name='btnRemove' " 
-		 + " type='submit' value='Remove' onclick= 'deleteItems()'>"
-		 + "<input name='itemID' type='hidden' " 
-		 + " value='" + itemID + "'>" + "</form></td></tr>"; 
-		 } 
+		 }
+		 
 		 con.close(); 
 		 // Complete the html table
 		 output += "</table>"; 
@@ -128,6 +121,7 @@ public class Item {
 		 { 
 			 output = "Error while reading the items."; 
 			 System.err.println(e.getMessage()); 
+			 
 		 } 
 		
 		

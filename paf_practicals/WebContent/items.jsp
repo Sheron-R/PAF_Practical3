@@ -30,33 +30,39 @@ session.setAttribute("statusMsg", stsMsg);
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+
 <title>Items Management</title>
 </head>
 <body>
-<h1>Items Management</h1>
-<form method="post" action="items.jsp">
- Item code: <input name="itemCode" type="text"><br> <br>
- Item name: <input name="itemName" type="text"><br> <br>
- Item price:<input name="itemPrice" type="text"><br><br>
- Item description: <input name="itemDesc" type="text"><br> <br>
- <input name="btnSubmit" type="submit" value="Save"> <br> <br>
-</form>
 
+<div class="container">
+ 	<div class="row">
+ 	<div class="col">
+		<h1>Items Management</h1>
+		<form method="post" action="items.jsp">
+		 Item Code: <input name="itemCode" type="text" class="form-control">
+		 <br>
+		 Item name:<input name="itemName" type="text" class="form-control">
+		 <br> 
+		 Item price:<input name="itemPrice" type="text" class="form-control">
+		 <br>
+		 Item description:<input name="itemDesc" type="text" class="form-control">
+		 <br> 
+  		 <input name="btnSubmit" type="submit" value="Save" class="btn btn-primary">
+  <br><br><br><br>     	 
+</form>
+<div class="alert alert-success">
+ <% out.print(session.getAttribute("statusMsg"));%>
+</div>
 <br> 
 <%
- out.print(session.getAttribute("statusMsg")); 
-%>
-<br>
-
-<%
- Item itemObj = new Item(); 
- out.print(itemObj.readItems()); 
-%>
-
-
-
+ Item itemObj = new Item();
+ out.print(itemObj.readItems());
+%></div></div></div>
 </body>
 </html>
-
-
 
